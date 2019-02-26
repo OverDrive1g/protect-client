@@ -11,13 +11,7 @@ namespace ProtectClient.Core.Controllers
     class LoginController: Controller
     {
         private IView _view;
-        public override IView View
-        {
-            get
-            {
-                return _view ?? new LoginView();
-            }
-        }
+        public override IView View => _view ?? new LoginView();
 
         public override bool Loadable()
         {

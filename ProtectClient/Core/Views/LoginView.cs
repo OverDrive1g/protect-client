@@ -19,25 +19,13 @@ namespace ProtectClient.Core.Views
             InitializeComponent();
         }
 
-        public Form Form
-        {
-            get
-            {
-                return this;
-            }
-        }
+        public Form Form => this;
 
         public string Title
         {
-            get
-            {
-                return Text;
-            }
+            get => Text;
 
-            set
-            {
-                Text = value;
-            }
+            set => Text = value;
         }
 
         private void labelBack_Click(object sender, EventArgs e)

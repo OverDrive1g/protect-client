@@ -8,16 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProtectClient.Core.Controllers
 {
-    class DefaultController: Controller
+    class DefaultController : Controller
     {
         private IView _view;
-        public override IView View
-        {
-            get
-            {
-                return _view ?? new DefaultView();
-            }
-        }
+        public override IView View => _view ?? new DefaultView();
 
         public override bool Loadable()
         {

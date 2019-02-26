@@ -25,19 +25,10 @@ namespace ProtectClient.Core.MVC
             }
         }
 
-        /// <summary>
-        /// The current WinForms-Form instance
-        /// </summary>
         private IView _currentView;
 
-        /// <summary>
-        /// Private constructor to prevent instantiation
-        /// </summary>
         private AppManager() { }
 
-        /// <summary>
-        /// Starts the AppManager and creates a singleton for this class
-        /// </summary>
         public static void Start<T>()
             where T : Controller
         {
@@ -47,51 +38,31 @@ namespace ProtectClient.Core.MVC
 
             T controller = Activator.CreateInstance<T>();
 
-            if (controller != null)
             {
-                _instance = new AppManager()
+                _instance = new AppManager
                 {
                     _currentView = controller.View
                 };
 
                 _instance.openForm();
             }
-            else
-            {
-                Application.Exit();
-            }
         }
 
-        /// <summary>
-        /// Loads a Controller, handles the loading state
-        /// </summary>
-        /// <typeparam name="T">Generic Type where T extends Controller</typeparam>
         public void Load<T>()
             where T : Controller
         {
             T controller = Activator.CreateInstance<T>();
 
-            if (controller != null)
+            if (controller.Loadable())
             {
-                if (controller.Loadable())
-                {
-                    controller.OnLoadSuccess(EventArgs.Empty);
-                }
-                else
-                {
-                    controller.OnLoadFailure(EventArgs.Empty);
-                }
+                controller.OnLoadSuccess(EventArgs.Empty);
             }
             else
             {
-                Application.Exit();
+                controller.OnLoadFailure(EventArgs.Empty);
             }
         }
 
-        /// <summary>
-        /// Shows the View of the Controller parameter  
-        /// </summary>
-        /// <param name="controller">The controller instance</param>
         public void Show(Controller controller)
         {
             if (_currentView != null)
@@ -107,9 +78,6 @@ namespace ProtectClient.Core.MVC
             th.Start();
         }
 
-        /// <summary>
-        /// Used as single-threaded appartment thread-callback to keep the main thread running
-        /// </summary>
         private void openForm()
         {
             Application.Run(_currentView.Form);

@@ -16,24 +16,12 @@ namespace ProtectClient.Core.Views
             InitializeComponent();
         }
 
-        public Form Form
-        {
-            get
-            {
-                return this;
-            }
-        }
+        public Form Form => this;
 
         public string Title
         {
-            get
-            {
-                return Text;
-            }
-            set
-            {
-                Text = value;
-            }
+            get => Text;
+            set => Text = value;
         }
 
         private void button1_Click(object sender, EventArgs e)

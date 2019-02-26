@@ -37,14 +37,12 @@ namespace ProtectClient.Core.MVC
 
         public void OnLoadSuccess(EventArgs e)
         {
-            if (LoadSuccess != null)
-                LoadSuccess(this, e);
+            LoadSuccess?.Invoke(this, e);
         }
 
         public void OnLoadFailure(EventArgs e)
         {
-            if (LoadFailed != null)
-                LoadFailed(this, e);
+            LoadFailed?.Invoke(this, e);
         }
     }
 }
