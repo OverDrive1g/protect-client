@@ -58,6 +58,8 @@
     <Compile Include="Core\MVC\AppManager.cs" />
     <Compile Include="Core\MVC\Controller.cs" />
     <Compile Include="Core\MVC\IView.cs" />
+    <Compile Include="Core\Protect\BaseProtect.cs" />
+    <Compile Include="Core\Protect\KeyProtect.cs" />
     <Compile Include="Core\ServerApi.cs" />
     <Compile Include="Core\Views\DefaultView.cs">
       <SubType>Form</SubType>
@@ -101,9 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Protect" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
