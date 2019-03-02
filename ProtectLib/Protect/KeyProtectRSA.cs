@@ -6,13 +6,13 @@ namespace ProtectClient.Core.Protect
     /// <summary>
     /// Защита с помощью ключа активации(RSA)
     /// </summary>
-    public class KeyProtectRSA : BaseProtect
+    public class KeyProtectRsa : BaseProtect
     {
         private byte[] privateKey;
         private byte[] publicKey;
         private byte[] recognizedText;
 
-        public KeyProtectRSA()
+        public KeyProtectRsa()
         {
             privateKey = null;
             publicKey = null;
