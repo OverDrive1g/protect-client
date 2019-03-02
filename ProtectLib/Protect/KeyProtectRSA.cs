@@ -32,11 +32,9 @@ namespace ProtectClient.Core.Protect
             throw new NotImplementedException();
         }
 
-        public RSAParameters getPublicKey()
+        public string getPublicKey()
         {
-            RSACryptoServiceProvider provider = new RSACryptoServiceProvider();
-            provider.ImportParameters(getCryptoParameters());
-            return provider.ExportParameters(false);
+            return Convert.ToBase64String(getCryptoParameters().Modulus);
         }
 
         private RSAParameters getPrivateKey()
@@ -46,12 +44,14 @@ namespace ProtectClient.Core.Protect
             return provider.ExportParameters(true);
         }
 
-        public bool activate(byte[] encryptedText)
+        public bool activate(string encryptedText)
         {
-            var cryptoProvider = new RSACryptoServiceProvider();
-            cryptoProvider.ImportParameters(getPrivateKey());
+            var encryptedData = Convert.FromBase64String(encryptedText);
             
-            var decryptedString = cryptoProvider.Decrypt(encryptedText, false);
+            var cryptoProvider = new RSACryptoServiceProvider();
+            cryptoProvider.ImportParameters(getCryptoParameters());
+            
+            var decryptedString = cryptoProvider.Decrypt(encryptedData, false);
             
             return Encoding.Unicode.GetString(decryptedString) == Encoding.Unicode.GetString(recognizedData);
         }
