@@ -59,7 +59,7 @@
     <Compile Include="Core\MVC\Controller.cs" />
     <Compile Include="Core\MVC\IView.cs" />
     <Compile Include="Core\Protect\BaseProtect.cs" />
-    <Compile Include="Core\Protect\KeyProtect.cs" />
+    <Compile Include="Core\Protect\KeyProtectRSA.cs" />
     <Compile Include="Core\ServerApi.cs" />
     <Compile Include="Core\Views\DefaultView.cs">
       <SubType>Form</SubType>

@@ -14,6 +14,7 @@ namespace ProtectClient
         [STAThread]
         static void Main()
         {
+            //fixme
             String programDir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\"+ Core.Info.programName;
 
             if (!Directory.Exists(programDir) ){
