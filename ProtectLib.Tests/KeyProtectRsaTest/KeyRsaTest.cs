@@ -1,5 +1,7 @@
 using System;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,10 +14,12 @@ namespace ProtectLib.Tests.KeyProtectRsaTest
     public class KeyRsaTest
     {
         private KeyProtectRsa _keyProtect;
+        
         [TestInitialize]
         public void testInitialize()
         {
             _keyProtect = new KeyProtectRsa();
+            _keyProtect.init();
         }
         [TestMethod]
         public void activate_validKey_true()
@@ -63,6 +67,37 @@ namespace ProtectLib.Tests.KeyProtectRsaTest
             var result = _keyProtect.activate(encryptText);
             
             Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void checkFile_withoutFile_false()
+        {
+            var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            var programFolder = $"{userFolder}/.protect-program";
+            
+            Directory.Delete(programFolder,true);
+            Directory.CreateDirectory(programFolder);
+            
+            var result = _keyProtect.checkFile();
+            
+            Assert.IsFalse(result);
+        }
+        
+        [TestMethod]
+        public void checkFile_withFile_true()
+        {
+            var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            var programFolder = $"{userFolder}/.protect-program";
+            
+            //Удалить папку чтоб ничего не сломалось
+            Directory.Delete(programFolder,true);
+            
+            Directory.CreateDirectory(programFolder);
+            File.Create($"{programFolder}/file.dat");
+                
+            var result = _keyProtect.checkFile();
+            
+            Assert.IsTrue(result);
         }
     }
 }
