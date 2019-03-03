@@ -1,25 +1,23 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using ProtectClient.Core.Protect;
 
-namespace ProtectClient.Core.Protect
+namespace ProtectLib.Protect
 {
     /// <summary>
     /// Защита с помощью ключа активации(RSA)
     /// </summary>
     public class KeyProtectRsa : BaseProtect
     {
-        private byte[] publicKey;
-        private byte[] exponent;
-        
-        private byte[] recognizedData;
+        private readonly byte[] _recognizedData;
 
         public KeyProtectRsa()
         {
-            String instanceNumber = "1"; //Порядковый номер прогарммы
-            String randomString = "5u>0uaW2"; //последовательность слайчаных символов
+            const string instanceNumber = "1"; //Порядковый номер прогарммы
+            const string randomString = "5u>0uaW2"; //последовательность слайчаных символов
 
-            recognizedData = Encoding.Unicode.GetBytes($"{instanceNumber} - {randomString}");
+            _recognizedData = Encoding.Unicode.GetBytes($"{instanceNumber} - {randomString}");
         }
 
         public override void init()
@@ -32,16 +30,9 @@ namespace ProtectClient.Core.Protect
             throw new NotImplementedException();
         }
 
-        public string getPublicKey()
+        public static string getPublicKey()
         {
             return Convert.ToBase64String(getCryptoParameters().Modulus);
-        }
-
-        private RSAParameters getPrivateKey()
-        {
-            RSACryptoServiceProvider provider = new RSACryptoServiceProvider();
-            provider.ImportParameters(getCryptoParameters());
-            return provider.ExportParameters(true);
         }
 
         public bool activate(string encryptedText)
@@ -53,7 +44,7 @@ namespace ProtectClient.Core.Protect
             
             var decryptedString = cryptoProvider.Decrypt(encryptedData, false);
             
-            return Encoding.Unicode.GetString(decryptedString) == Encoding.Unicode.GetString(recognizedData);
+            return Encoding.Unicode.GetString(decryptedString) == Encoding.Unicode.GetString(_recognizedData);
         }
 
         private static RSAParameters getCryptoParameters()
