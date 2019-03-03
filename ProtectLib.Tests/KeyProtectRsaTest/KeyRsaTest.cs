@@ -18,7 +18,7 @@ namespace ProtectLib.Tests.KeyProtectRsaTest
             _keyProtect = new KeyProtectRsa();
         }
         [TestMethod]
-        public void endTest1()
+        public void activate_validKey_true()
         {
             const string textToEncrypt = "1 - 5u>0uaW2";
             
@@ -43,7 +43,7 @@ namespace ProtectLib.Tests.KeyProtectRsaTest
         }
         
         [TestMethod]
-        public void endTest2()
+        public void activate_invalidKey_false()
         {
             const string textToEncrypt = "1 - 12345678";
             
