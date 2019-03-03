@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using ProtectClient.Core.Protect;
@@ -22,7 +23,14 @@ namespace ProtectLib.Protect
 
         public override void init()
         {
-            throw new NotImplementedException();
+            var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            var programFolder = $"{userFolder}/.protect-program";
+
+            if (!Directory.Exists(programFolder))
+            {
+                Directory.CreateDirectory(programFolder);
+            }
+            
         }
 
         public override bool validate()
@@ -47,6 +55,15 @@ namespace ProtectLib.Protect
             return Encoding.Unicode.GetString(decryptedString) == Encoding.Unicode.GetString(_recognizedData);
         }
 
+        public bool checkFile()
+        {
+            
+            var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            var programFolder = $"{userFolder}/.protect-program";
+
+            return File.Exists($"{programFolder}/file.dat");
+        }
+        
         private static RSAParameters getCryptoParameters()
         {
             //FIXME очень захардкоженый код, над шот с этим делать
