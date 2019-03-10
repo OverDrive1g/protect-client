@@ -93,5 +93,25 @@ namespace ProtectLib.Protect
             
             File.WriteAllText(getFilePath(), payload);
         }
+
+        private string getFilePayload()
+        {
+            string result = "";
+            try
+            {
+                using (StreamReader sr = new StreamReader(getFilePath()))
+                {
+                    String line = sr.ReadToEnd();
+                    result = result + line + "\n";
+                }
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(e.Message);
+            }
+
+            return result;
+        }
     }
 }
