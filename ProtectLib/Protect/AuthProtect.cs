@@ -1,4 +1,3 @@
-using System;
 using System.Web.Script.Serialization;
 using RestSharp;
 
@@ -19,12 +18,11 @@ namespace ProtectLib.Protect
 
         public void init()
         {
-            throw new NotImplementedException();
         }
 
         public bool validate()
         {
-            throw new NotImplementedException();
+            return validateRequest();
         }
 
         public bool login(string login, string password)
