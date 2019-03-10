@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -42,8 +43,10 @@ namespace ProtectLib.Protect
 
         public bool validate()
         {
-            //read and validate file data
-            throw new NotImplementedException();
+            var payload = getFilePayload();
+            var result = new JavaScriptSerializer().Deserialize<Dictionary<string,object>>(payload);
+
+            return (bool) result["activate"];
         }
 
         public string getPublicKey()
@@ -85,13 +88,11 @@ namespace ProtectLib.Protect
         
         private void createFile()
         {
-            File.Create(getFilePath());
+            File.WriteAllText(getFilePath(), "");
         }
 
         private void initFile(String payload)
         {
-            createFile();
-            
             File.WriteAllText(getFilePath(), payload);
         }
 
