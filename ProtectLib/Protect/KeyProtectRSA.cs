@@ -32,10 +32,16 @@ namespace ProtectLib.Protect
                 Directory.CreateDirectory(programFolder);
             }
             
+            if (!checkFile())
+            {
+                createFile();
+            }
+            
         }
 
         public bool validate()
         {
+            //read and validate file data
             throw new NotImplementedException();
         }
 
@@ -56,12 +62,36 @@ namespace ProtectLib.Protect
             return Encoding.Unicode.GetString(decryptedString) == Encoding.Unicode.GetString(_recognizedData);
         }
 
+        /// <summary>
+        /// Проверка на существование файла
+        /// </summary>
+        /// <returns></returns>
         public bool checkFile()
         {
-            var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            var programFolder = $"{userFolder}/.protect-program";
+            return File.Exists(getFilePath());
+        }
 
-            return File.Exists($"{programFolder}/file.dat");
+        private string getProgramFolder()
+        {
+            var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            return $"{userFolder}/.protect-program";
+        }
+        
+        private string getFilePath()
+        {
+            return $"{getProgramFolder()}/file.dat";
+        }
+        
+        private void createFile()
+        {
+            File.Create(getFilePath());
+        }
+
+        private void initFile(String payload)
+        {
+            createFile();
+            
+            File.WriteAllText(getFilePath(), payload);
         }
     }
 }
