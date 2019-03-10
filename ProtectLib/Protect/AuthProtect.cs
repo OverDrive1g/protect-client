@@ -12,7 +12,7 @@ namespace ProtectLib.Protect
 
         public AuthProtect(int programId)
         {
-            this._programId = programId; 
+            _programId = programId; 
             _accessToken = "";
             _restClient = new RestClient("http://localhost:3000");
             

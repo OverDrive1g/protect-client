@@ -58,7 +58,6 @@ namespace ProtectLib.Protect
 
         public bool checkFile()
         {
-            
             var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             var programFolder = $"{userFolder}/.protect-program";
 
