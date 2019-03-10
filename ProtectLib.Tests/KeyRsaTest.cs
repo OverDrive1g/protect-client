@@ -1,14 +1,11 @@
 using System;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProtectClient.Core.Protect;
 using ProtectLib.Protect;
 
-namespace ProtectLib.Tests.KeyProtectRsaTest
+namespace ProtectLib.Tests
 {
     [TestClass]
     public class KeyRsaTest
