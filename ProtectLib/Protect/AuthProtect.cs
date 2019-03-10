@@ -7,11 +7,13 @@ namespace ProtectLib.Protect
 {
     public class AuthProtect: BaseProtect
     {
-        private RestClient _restClient;
+        private int programId;
+        private readonly RestClient _restClient;
         private string _accessToken;
 
-        public AuthProtect()
+        public AuthProtect(int programId)
         {
+            this.programId = programId; 
             _accessToken = "";
             _restClient = new RestClient("http://localhost:3000");
             
@@ -46,6 +48,11 @@ namespace ProtectLib.Protect
             return response.Data.ok;
         }
 
+        public bool validateRequest()
+        {
+            return false;
+        }
+
         private class LoginRequest
         {
             public string login { get; set; }
@@ -58,6 +65,16 @@ namespace ProtectLib.Protect
             public string token { get; set; }
             public string error { get; set; }
         }
-        
+
+        private class ValidateRequest
+        {
+            public string token { get; set; }
+            public int program_id { get; set; }
+        }
+
+        private class ValidateResponse
+        {
+            public bool ok { get; set; }
+        } 
     }
 }

@@ -11,7 +11,7 @@ namespace ProtectLib.Tests
         [TestInitialize]
         public void testInitialize()
         {
-            _authProtect = new AuthProtect();
+            _authProtect = new AuthProtect(0);
         }
 
         [TestMethod]
@@ -32,6 +32,43 @@ namespace ProtectLib.Tests
             String password = "notValidPassword";
             
             var result = _authProtect.login(login, password);
+            
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void validateRequest_validData_true()
+        {
+            AuthProtect testingClass = new AuthProtect(1);
+            
+            String login = "bpodd0";
+            String password = "notValidPassword";
+            
+            testingClass.login(login, password);
+            var result = testingClass.validate();
+            
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void validateRequest_invalidData_false()
+        {
+            AuthProtect testingClass = new AuthProtect(123456);
+            
+            String login = "bpodd0";
+            String password = "notValidPassword";
+            
+            testingClass.login(login, password);
+            var result = testingClass.validate();
+            
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void validateRequest_withoutLogin_false()
+        {
+            AuthProtect testingClass = new AuthProtect(1);
+            var result = testingClass.validate();
             
             Assert.IsFalse(result);
         }
