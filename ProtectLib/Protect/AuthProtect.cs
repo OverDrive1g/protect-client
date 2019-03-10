@@ -50,7 +50,19 @@ namespace ProtectLib.Protect
 
         public bool validateRequest()
         {
-            return false;
+            if (_accessToken == "")
+            {
+                return false;
+            }
+            
+            var request = new RestRequest("validate");
+            var body = new ValidateRequest {token = _accessToken, program_id = programId};
+
+            var json = new JavaScriptSerializer().Serialize(body);
+            request.AddParameter("application/json", json, ParameterType.RequestBody);
+            
+            var response = _restClient.Post<ValidateResponse>(request);
+            return response.Data.ok;
         }
 
         private class LoginRequest
