@@ -59,6 +59,7 @@
     <Compile Include="Protect\AuthProtect.cs" />
     <Compile Include="Protect\IBaseProtect.cs" />
     <Compile Include="Protect\KeyProtectRSA.cs" />
+    <Compile Include="Protect\RenameProtect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
