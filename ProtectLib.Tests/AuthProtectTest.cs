@@ -33,7 +33,7 @@ namespace ProtectLib.Tests
             
             var result = _authProtect.login(login, password);
             
-            Assert.IsTrue(result);
+            Assert.IsFalse(result);
         }
     }
 }
