@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Script.Serialization;
 
 namespace ProtectLib.Protect
 {
@@ -31,12 +32,12 @@ namespace ProtectLib.Protect
             {
                 Directory.CreateDirectory(programFolder);
             }
+
+            if (checkFile()) return;
             
-            if (!checkFile())
-            {
-                createFile();
-            }
-            
+            var json = new JavaScriptSerializer().Serialize(new {activate = false});
+            initFile(json);
+
         }
 
         public bool validate()
