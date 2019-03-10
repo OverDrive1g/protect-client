@@ -8,7 +8,7 @@ namespace ProtectLib.Protect
     /// <summary>
     /// Защита с помощью ключа активации(RSA)
     /// </summary>
-    public class KeyProtectRsa : BaseProtect
+    public class KeyProtectRsa : IBaseProtect
     {
         private RSAParameters _privateKey; 
         private readonly byte[] _recognizedData;
@@ -22,7 +22,7 @@ namespace ProtectLib.Protect
             _recognizedData = Encoding.Unicode.GetBytes($"{instanceNumber} - {randomString}");
         }
 
-        public override void init()
+        public void init()
         {
             var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             var programFolder = $"{userFolder}/.protect-program";
@@ -34,7 +34,7 @@ namespace ProtectLib.Protect
             
         }
 
-        public override bool validate()
+        public bool validate()
         {
             throw new NotImplementedException();
         }

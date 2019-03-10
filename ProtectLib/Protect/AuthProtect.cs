@@ -4,7 +4,7 @@ using RestSharp;
 
 namespace ProtectLib.Protect
 {
-    public class AuthProtect: BaseProtect
+    public class AuthProtect: IBaseProtect
     {
         private readonly int _programId;
         private readonly RestClient _restClient;
@@ -15,15 +15,14 @@ namespace ProtectLib.Protect
             _programId = programId; 
             _accessToken = "";
             _restClient = new RestClient("http://localhost:3000");
-            
         }
 
-        public override void init()
+        public void init()
         {
             throw new NotImplementedException();
         }
 
-        public override bool validate()
+        public bool validate()
         {
             throw new NotImplementedException();
         }
