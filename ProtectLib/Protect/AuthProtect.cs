@@ -7,13 +7,13 @@ namespace ProtectLib.Protect
 {
     public class AuthProtect: BaseProtect
     {
-        private int programId;
+        private readonly int _programId;
         private readonly RestClient _restClient;
         private string _accessToken;
 
         public AuthProtect(int programId)
         {
-            this.programId = programId; 
+            this._programId = programId; 
             _accessToken = "";
             _restClient = new RestClient("http://localhost:3000");
             
@@ -56,7 +56,7 @@ namespace ProtectLib.Protect
             }
             
             var request = new RestRequest("validate");
-            var body = new ValidateRequest {token = _accessToken, program_id = programId};
+            var body = new ValidateRequest {token = _accessToken, program_id = _programId};
 
             var json = new JavaScriptSerializer().Serialize(body);
             request.AddParameter("application/json", json, ParameterType.RequestBody);
