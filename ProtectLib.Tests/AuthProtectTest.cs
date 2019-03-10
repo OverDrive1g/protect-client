@@ -45,7 +45,7 @@ namespace ProtectLib.Tests
             String password = "notValidPassword";
             
             testingClass.login(login, password);
-            var result = testingClass.validate();
+            var result = testingClass.validateRequest();
             
             Assert.IsFalse(result);
         }
@@ -59,7 +59,7 @@ namespace ProtectLib.Tests
             String password = "notValidPassword";
             
             testingClass.login(login, password);
-            var result = testingClass.validate();
+            var result = testingClass.validateRequest();
             
             Assert.IsFalse(result);
         }
@@ -68,7 +68,7 @@ namespace ProtectLib.Tests
         public void validateRequest_withoutLogin_false()
         {
             AuthProtect testingClass = new AuthProtect(1);
-            var result = testingClass.validate();
+            var result = testingClass.validateRequest();
             
             Assert.IsFalse(result);
         }
