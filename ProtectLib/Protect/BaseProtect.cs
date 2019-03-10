@@ -1,4 +1,4 @@
-namespace ProtectClient.Core.Protect
+namespace ProtectLib.Protect
 {
     public abstract class BaseProtect
     {

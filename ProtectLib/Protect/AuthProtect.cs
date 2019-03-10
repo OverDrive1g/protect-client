@@ -1,6 +1,5 @@
 using System;
 using System.Web.Script.Serialization;
-using ProtectClient.Core.Protect;
 using RestSharp;
 
 namespace ProtectLib.Protect
@@ -21,12 +20,12 @@ namespace ProtectLib.Protect
 
         public override void init()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override bool validate()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool login(string login, string password)
