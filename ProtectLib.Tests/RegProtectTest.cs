@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Win32;
+using ProtectLib.Exception;
 using ProtectLib.Protect;
 
 namespace ProtectLib.Tests
@@ -20,7 +21,12 @@ namespace ProtectLib.Tests
         public void TestCleanup()
         {
             RegistryKey currentUserKey = Registry.CurrentUser;
-            currentUserKey.DeleteSubKey(RegisterName);
+            var programKey = currentUserKey.OpenSubKey(RegisterName);
+            if (programKey != null)
+            {
+                currentUserKey.DeleteSubKey(RegisterName);
+            }
+            
         }
 
         [TestMethod]
@@ -46,9 +52,17 @@ namespace ProtectLib.Tests
         [TestMethod]
         public void validate_WithoutInit_false()
         {
-            var result = _regProtect.validate();
+            NotInitProtectException expectedException = null;
+            try
+            {
+                _regProtect.validate();
+            }
+            catch (NotInitProtectException ex)
+            {
+                expectedException = ex;
+            }
             
-            Assert.IsFalse(result);
+            Assert.IsNotNull(expectedException);
         }
         
         [TestMethod]

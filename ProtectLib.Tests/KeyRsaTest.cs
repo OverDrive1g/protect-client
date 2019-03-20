@@ -108,13 +108,5 @@ namespace ProtectLib.Tests
             
             Assert.IsTrue(result);
         }
-        
-        [TestMethod]
-        public void validate_a_a()
-        {
-            //TODO: delete me
-            _keyProtect.init();
-            _keyProtect.validate();
-        }
     }
 }
