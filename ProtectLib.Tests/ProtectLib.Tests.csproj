@@ -52,6 +52,7 @@
     <Compile Include="AuthProtectTest.cs" />
     <Compile Include="KeyRsaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegProtectTest.cs" />
     <Compile Include="RenameProtectTest.cs" />
   </ItemGroup>
   <ItemGroup>
