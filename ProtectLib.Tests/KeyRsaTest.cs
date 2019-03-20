@@ -77,36 +77,5 @@ namespace ProtectLib.Tests
             Assert.IsFalse(result);
         }
 
-        [TestMethod]
-        public void checkFile_withoutFile_false()
-        {
-            //TODO: Тест валиться из-за того что файл занят другим процессом, над шот  сэтим делать
-//            var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-//            var programFolder = $"{userFolder}/.protect-program";
-//            
-//            Directory.Delete(programFolder,true);
-//            Directory.CreateDirectory(programFolder);
-//            
-//            var result = _keyProtect.checkFile();
-//            
-//            Assert.IsFalse(result);
-        }
-        
-        [TestMethod]
-        public void checkFile_withFile_true()
-        {
-            var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            var programFolder = $"{userFolder}/.protect-program";
-            
-            //Удалить папку чтоб ничего не сломалось
-            Directory.Delete(programFolder,true);
-            
-            Directory.CreateDirectory(programFolder);
-            File.Create($"{programFolder}/file.dat");
-                
-            var result = _keyProtect.checkFile();
-            
-            Assert.IsTrue(result);
-        }
     }
 }
