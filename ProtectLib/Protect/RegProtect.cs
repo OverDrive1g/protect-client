@@ -5,14 +5,23 @@ namespace ProtectLib.Protect
     /// </summary>
     public class RegProtect: IBaseProtect
     {
+       
+        public RegProtect(string regName)
+        {
+        }
+
         public void init()
         {
-            throw new System.NotImplementedException();
         }
 
         public bool validate()
         {
-            throw new System.NotImplementedException();
+            return false;
+        }
+
+        private bool isInit()
+        {
+            return false;
         }
     }
 }

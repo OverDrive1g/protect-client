@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exception\NotInitProtectException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protect\AuthProtect.cs" />
     <Compile Include="Protect\IBaseProtect.cs" />
@@ -66,7 +67,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Exception" />
+    <Folder Include="Storage" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>
