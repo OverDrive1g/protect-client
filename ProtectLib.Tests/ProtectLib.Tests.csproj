@@ -49,11 +49,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthProtectTest.cs" />
-    <Compile Include="KeyRsaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegProtectTest.cs" />
-    <Compile Include="RenameProtectTest.cs" />
+    <Compile Include="Protect\AuthProtectTest.cs" />
+    <Compile Include="Protect\KeyRsaTest.cs" />
+    <Compile Include="Protect\RegProtectTest.cs" />
+    <Compile Include="Protect\RenameProtectTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,6 +63,9 @@
       <Project>{c184956d-512e-4fb4-a5fd-243052c6f4d8}</Project>
       <Name>ProtectLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Storage" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

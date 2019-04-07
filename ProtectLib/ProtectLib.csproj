@@ -63,6 +63,7 @@
     <Compile Include="Protect\RegProtect.cs" />
     <Compile Include="Protect\RenameProtect.cs" />
     <Compile Include="Storage\FileStorage.cs" />
+    <Compile Include="Storage\InMemoryStorage.cs" />
     <Compile Include="Storage\IStorage.cs" />
     <Compile Include="Storage\RegStorage.cs" />
   </ItemGroup>
