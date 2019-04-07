@@ -1,17 +1,18 @@
 using System.Web.Script.Serialization;
+using ProtectLib.Utils;
 using RestSharp;
 
 namespace ProtectLib.Protect
 {
     public class AuthProtect: IBaseProtect
     {
-        private readonly int _programId;
+        private readonly ProgramInfo _info;
         private readonly RestClient _restClient;
         private string _accessToken;
 
-        public AuthProtect(int programId)
+        public AuthProtect(ProgramInfo programInfo)
         {
-            _programId = programId; 
+            _info = programInfo;
             _accessToken = "";
             _restClient = new RestClient("http://localhost:3000");
         }
@@ -52,7 +53,7 @@ namespace ProtectLib.Protect
             }
             
             var request = new RestRequest("validate");
-            var body = new ValidateRequest {token = _accessToken, program_id = _programId};
+            var body = new ValidateRequest {token = _accessToken, program_id = _info.ProgramId};
 
             var json = new JavaScriptSerializer().Serialize(body);
             request.AddParameter("application/json", json, ParameterType.RequestBody);
@@ -77,7 +78,7 @@ namespace ProtectLib.Protect
         private class ValidateRequest
         {
             public string token { get; set; }
-            public int program_id { get; set; }
+            public long program_id { get; set; }
         }
 
         private class ValidateResponse

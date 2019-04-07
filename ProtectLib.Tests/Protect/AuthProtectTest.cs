@@ -1,6 +1,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProtectLib.Protect;
+using ProtectLib.Utils;
 
 namespace ProtectLib.Tests
 {
@@ -11,7 +12,7 @@ namespace ProtectLib.Tests
         [TestInitialize]
         public void testInitialize()
         {
-            _authProtect = new AuthProtect(0);
+            _authProtect = new AuthProtect(new ProgramInfo {ProgramId = 0});
         }
 
         [TestMethod]
@@ -39,7 +40,7 @@ namespace ProtectLib.Tests
         [TestMethod]
         public void validateRequest_validData_true()
         {
-            AuthProtect testingClass = new AuthProtect(1);
+            AuthProtect testingClass = new AuthProtect(new ProgramInfo {ProgramId = 1});
             
             String login = "bpodd0";
             String password = "notValidPassword";
@@ -53,7 +54,7 @@ namespace ProtectLib.Tests
         [TestMethod]
         public void validateRequest_invalidData_false()
         {
-            AuthProtect testingClass = new AuthProtect(123456);
+            AuthProtect testingClass = new AuthProtect(new ProgramInfo {ProgramId = 123456});
             
             String login = "bpodd0";
             String password = "notValidPassword";
@@ -67,7 +68,7 @@ namespace ProtectLib.Tests
         [TestMethod]
         public void validateRequest_withoutLogin_false()
         {
-            AuthProtect testingClass = new AuthProtect(1);
+            AuthProtect testingClass = new AuthProtect(new ProgramInfo {ProgramId = 1});
             var result = testingClass.validateRequest();
             
             Assert.IsFalse(result);
