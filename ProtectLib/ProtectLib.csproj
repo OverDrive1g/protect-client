@@ -62,12 +62,12 @@
     <Compile Include="Protect\KeyProtectRSA.cs" />
     <Compile Include="Protect\RegProtect.cs" />
     <Compile Include="Protect\RenameProtect.cs" />
+    <Compile Include="Storage\FileStorage.cs" />
+    <Compile Include="Storage\IStorage.cs" />
+    <Compile Include="Storage\RegStorage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Storage" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>
