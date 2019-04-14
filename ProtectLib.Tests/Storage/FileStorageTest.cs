@@ -27,10 +27,4 @@ namespace ProtectLib.Tests.Storage
             Assert.AreEqual(storagePayload, payload);
         }
     }
-
-    public class Payload
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-    }
 }

@@ -55,6 +55,7 @@
     <Compile Include="Protect\RegProtectTest.cs" />
     <Compile Include="Protect\RenameProtectTest.cs" />
     <Compile Include="Storage\FileStorageTest.cs" />
+    <Compile Include="Storage\Payload.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
