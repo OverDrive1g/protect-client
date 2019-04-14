@@ -4,11 +4,11 @@ using System.Runtime.Serialization;
 
 namespace ProtectLib.Storage
 {
-    public class FileStorage<T>: IStorage<T>
+    public class FileStorage<T> : IStorage<T>
     {
-        public string FolderName { get; set; }
-        public string FileName { get; set; }
-        public IFormatter Formatter { get; set; }
+        public string FolderName { get; }
+        public string FileName { get; }
+        public IFormatter Formatter { get; }
 
         private T _payload;
 
@@ -65,12 +65,12 @@ namespace ProtectLib.Storage
         {
             return $"{GetUserFolder()}/${FolderName}";
         }
-        
+
         private bool CheckFile()
         {
             return File.Exists(GetFilePath());
         }
-        
+
         private string GetFilePath()
         {
             return $"{GetProgramFolder()}/{FileName}";
