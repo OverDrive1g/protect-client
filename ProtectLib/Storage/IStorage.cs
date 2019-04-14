@@ -12,6 +12,10 @@ namespace ProtectLib.Storage
         /// </summary>
         T get();
 
+        /// <summary>
+        /// Установка нового значения в хранилища
+        /// </summary>
+        /// <param name="value"></param>
         void set(T value);
         
         /// <summary>
