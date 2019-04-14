@@ -6,9 +6,9 @@ namespace ProtectLib.Storage
 {
     public class FileStorage<T> : IStorage<T>
     {
-        public string FolderName { get; }
-        public string FileName { get; }
-        public IFormatter Formatter { get; }
+        private string FolderName { get; }
+        private string FileName { get; }
+        private IFormatter Formatter { get; }
 
         private T _payload;
 
