@@ -54,6 +54,7 @@
     <Compile Include="Protect\KeyRsaTest.cs" />
     <Compile Include="Protect\RegProtectTest.cs" />
     <Compile Include="Protect\RenameProtectTest.cs" />
+    <Compile Include="Storage\FileStorageTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,9 +64,6 @@
       <Project>{c184956d-512e-4fb4-a5fd-243052c6f4d8}</Project>
       <Name>ProtectLib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Storage" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
