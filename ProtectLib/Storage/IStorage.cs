@@ -1,8 +1,6 @@
-using System;
-
 namespace ProtectLib.Storage
 {
-    public interface IStorage
+    public interface IStorage<T>
     {
         /// <summary>
         /// Метод для инициализации хранилища
@@ -10,16 +8,11 @@ namespace ProtectLib.Storage
         void init();
         
         /// <summary>
-        /// Метод для получение значения по его ключу
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        object getValue(string key);
-        
-        /// <summary>
         /// Получение списка всех значений и ключей
         /// </summary>
-        void getAll();
+        T get();
+
+        void set(T value);
         
         /// <summary>
         /// Обновляет все значение из хранилища

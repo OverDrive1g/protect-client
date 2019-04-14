@@ -1,30 +1,11 @@
+using System.Runtime.Serialization;
+
 namespace ProtectLib.Storage
 {
-    public class FileStorage:IStorage
+    public class FileStorage
     {
-        public void init()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public object getValue(string key)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void getAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void update()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void save()
-        {
-            throw new System.NotImplementedException();
-        }
+        public string FolderName { get; set; }
+        public string FileName { get; set; }
+        public IFormatter Formatter { get; set; }
     }
 }
